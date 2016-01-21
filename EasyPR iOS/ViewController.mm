@@ -295,8 +295,7 @@ CPlateRecognize pr;
 - (void)TraningPressed:(id)sund
 {
     NSLog(@"识别按钮");
-    UIImage *temp_image=[UIImageCVMatConverter scaleAndRotateImageBackCamera:imageView.image];
-    source_image=[UIImageCVMatConverter cvMatFromUIImage:temp_image];
+    source_image=[UIImageCVMatConverter cvMatFromUIImage:imageView.image];
     [self plateRecognition:source_image];
 
 
