@@ -279,13 +279,16 @@ CPlateRecognize pr;
             cout << "plateRecognize: " << plateVec[j] << endl;
         }
     }
-    printf("%s",plateVec[0].c_str());
-    NSString *errorMessage = [NSString stringWithCString:plateVec[0].c_str()
-                                                encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",errorMessage);
+    
+    NSString *errorMessage = @"未识别出车牌";
+    if (plateVec.size() > 0) {
+        printf("%s",plateVec[0].c_str());
+        errorMessage = [NSString stringWithCString:plateVec[0].c_str() encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",errorMessage);
+    }
+    
   //  NSString* string2 = [plateVec[0].c_str() stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.textLabel performSelectorOnMainThread:@selector(setText:) withObject:[NSString stringWithFormat:@"%@",errorMessage] waitUntilDone:NO];
-  
     
     if (result != 0)
         cout << "result:" << result << endl;
